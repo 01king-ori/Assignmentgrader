@@ -1,0 +1,34 @@
+                         List of relations
+ Schema |                Name                |   Type   |  Owner   
+--------+------------------------------------+----------+----------
+ public | auth_group                         | table    | postgres
+ public | auth_group_id_seq                  | sequence | postgres
+ public | auth_group_permissions             | table    | postgres
+ public | auth_group_permissions_id_seq      | sequence | postgres
+ public | auth_permission                    | table    | postgres
+ public | auth_permission_id_seq             | sequence | postgres
+ public | django_admin_log                   | table    | postgres
+ public | django_admin_log_id_seq            | sequence | postgres
+ public | django_content_type                | table    | postgres
+ public | django_content_type_id_seq         | sequence | postgres
+ public | django_migrations                  | table    | postgres
+ public | django_migrations_id_seq           | sequence | postgres
+ public | django_session                     | table    | postgres
+ public | polls_assignment                   | table    | postgres
+ public | polls_assignment_id_seq            | sequence | postgres
+ public | polls_course                       | table    | postgres
+ public | polls_course_id_seq                | sequence | postgres
+ public | polls_gradereport                  | table    | postgres
+ public | polls_gradereport_id_seq           | sequence | postgres
+ public | polls_lecturer                     | table    | postgres
+ public | polls_student                      | table    | postgres
+ public | polls_submission                   | table    | postgres
+ public | polls_submission_id_seq            | sequence | postgres
+ public | polls_user                         | table    | postgres
+ public | polls_user_groups                  | table    | postgres
+ public | polls_user_groups_id_seq           | sequence | postgres
+ public | polls_user_id_seq                  | sequence | postgres
+ public | polls_user_user_permissions        | table    | postgres
+ public | polls_user_user_permissions_id_seq | sequence | postgres
+(29 rows)
+
