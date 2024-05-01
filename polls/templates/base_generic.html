@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django Project{% endblock %}</title>
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1><a href="/">My Django Project</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'register_lecturer' %}">Register Lecturer</a></li>
+                <li><a href="{% url 'register_student' %}">Register Student</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'lecturer_dashboard' %}">Lecturer Dashboard</a></li>
+                <li><a href="{% url 'student_dashboard' %}">Student Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Main content goes here -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>© 2024 My Django Project. All rights reserved.</p>
+    </footer>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

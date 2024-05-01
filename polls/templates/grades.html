@@ -1,0 +1,26 @@
+<!-- grades.html -->
+{% extends 'base.html' %}
+
+{% block title %}Grades{% endblock %}
+
+{% block content %}
+<h2>Grades</h2>
+{% if grades %}
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Assignment</th>
+    <th>Grade</th>
+  </tr>
+  {% for grade in grades %}
+  <tr>
+    <td>{{ grade.student.user.username }}</td>
+    <td>{{ grade.assignment.title }}</td>
+    <td>{{ grade.grade }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No grades available.</p>
+{% endif %}
+{% endblock %}

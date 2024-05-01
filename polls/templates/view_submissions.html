@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Submissions for Assignment: {{ assignment.title }}</h2>
+{% if submissions %}
+  <ul>
+    {% for submission in submissions %}
+      <li>{{ submission.content }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No submissions yet.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Student Dashboard</h2>
+<p>Welcome to your dashboard.</p>
+<a href="{% url 'view_assignments' %}">view assignment Assignment</a><br>
+<a href="{% url 'view_grades' %}">View Grades</a><br>
+<!-- Add dynamic content here as needed -->
+{% endblock %}
+

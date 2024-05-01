@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+	
+{% block title %}Lecturer View{% endblock %}
+	
+{% block content %}
+<h2>Your Courses</h2>
+<ul>
+    {% for course in courses %}
+        <li><b>{{ course.name }}</b></li>
+        <ul>
+            {% for assignment in assignments %}
+                {% if assignment.course == course %}
+                    <li>
+                        <br><br><a href="{% url 'view_submissions' assignment.id %}">{{ assignment.title }}</a> (Due: {{ assignment.due_date }})
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
+{% endblock %}

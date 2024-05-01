@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script>
+        function toggleRole(role) {
+            if (role === 'lecturer') {
+                document.getElementById('lecturer-form').style.display = 'block';
+                document.getElementById('student-form').style.display = 'none';
+            } else {
+                document.getElementById('lecturer-form').style.display = 'none';
+                document.getElementById('student-form').style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Register</h2>
+    <div>
+        <button onclick="toggleRole('lecturer')">Lecturer</button>
+        <button onclick="toggleRole('student')">Student</button>
+    </div>
+
+    <div id="lecturer-form" style="display:none;">
+        <form method="post">
+            {% csrf_token %}
+            {{ lecturer_form.as_p }}
+            <input type="hidden" name="role" value="lecturer">
+            <button type="submit">Register as Lecturer</button>
+        </form>
+    </div>
+
+    <div id="student-form" style="display:none;">
+        <form method="post">
+            {% csrf_token %}
+            {{ student_form.as_p }}
+            <input type="hidden" name="role" value="student">
+            <button type="submit">Register as Student</button>
+        </form>
+    </div>
+</body>
+</html>

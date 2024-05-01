@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Work{% endblock %}
+
+{% block content %}
+<h2>Submit Work</h2>
+<h3>Assignment: {{ assignment.title }}</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="submission">Your submission for the assignment</label><br>
+    <textarea id="submission" name="content" class="flexible"></textarea><br>
+    
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignment Detail{% endblock %}
+
+{% block content %}
+<h2>{{ assignment.title }}</h2>
+<p><b>Course:</b> {{ assignment.course.name }}</p>
+<p><b>Description:</b> {{ assignment.description }}</p>
+<p><b>Due Date:</b> {{ assignment.due_date }}</p>
+
+<p><b>Lecturer:</b> {{ assignment.lecturer }}</p>
+
+<!-- Add more details here as needed -->
+{% endblock %}
