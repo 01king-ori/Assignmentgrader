@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        li{
+           list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Autograder assignment</h1>
+    
+    <h2>Register</h2>
+    <div>
+        <li><a href="{% url 'register_lecturer' %}">Register Lecturer</a></li>
+        <li><a href="{% url 'register_student' %}">Register Student</a></li>
+    </div>
+
+  <h3>Already have an account?</h3>
+  <li><a href="{% url 'login' %}">Login</a></li>
+</body>
+</html>

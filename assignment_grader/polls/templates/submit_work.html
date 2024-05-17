@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Work{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    .mt-4 {
+        margin-top: 1rem;
+    }
+
+    form {
+        border-radius: 5px;
+        padding: 1.5rem;
+        border: 1px solid #ddd;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    #submission {
+        width: 100%;
+        min-height: 150px;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .flexible {
+        height: auto;
+        resize: vertical;
+    }
+
+    input[type="submit"] {
+        padding: 0.75rem 1.5rem;
+        border: 1px solid #007bff;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0062cc;
+    }
+
+    p.error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<div class="mt-4">
+    <a class="btn btn-primary" href="{% url 'student_dashboard' %}">main menu</a><br><br>
+</div>
+<h2>Submit Work</h2>
+<h3>Assignment: {{ assignment.title }}</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="submission">Your submission for the assignment</label><br>
+    <textarea id="submission" name="content" class="flexible"></textarea><br>
+    
+    <input type="submit" value="Submit">
+</form>
+{% if error %}
+    <p class="error"><strong> Error {{ error }}</strong></p>
+{% endif %}
+{% endblock %}

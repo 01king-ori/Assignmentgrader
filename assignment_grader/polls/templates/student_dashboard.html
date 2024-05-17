@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #303030;
+        text-align: center;
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem !important;
+    }
+
+    .btn-primary {
+        background-color: #303030;
+        color: white;
+        border-color: #303030;
+        margin-right: 10px;
+        padding: 0.75rem 1.25rem;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary:hover {
+        background-color: #222222;
+        border-color: #222222;
+    }
+
+    .card {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .card h4 {
+        margin-top: 0;
+        color: #303030;
+    }
+
+    .card p {
+        margin-bottom: 0;
+        color: #666;
+    }
+</style>
+
+<div class="container">
+    <h2 class="mt-5">Student Dashboard</h2>
+    <p class="mt-4">Welcome to your dashboard.</p>
+    <div class="mt-4">
+        <a class="btn btn-primary" href="{% url 'view_assignments' %}">View Assignments</a><br><br>
+        <br><br><a class="btn btn-primary" href="{% url 'view_grades' %}">View Grades</a><br><br>
+    </div>
+</div>
+
+<h2>Almost Due Assignments</h2>
+
+<div class="container">
+    {% for assignment in assignments %}
+        {% if assignment.days_until_due < 1 %}
+            <div class="card">
+                <h4>Title: {{ assignment.title }}</h4>
+                <p><b>Days until Due:</b> {{ assignment.days_until_due }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

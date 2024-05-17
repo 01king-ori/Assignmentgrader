@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    {% block additionalstyles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            h1{
+                color:black;
+                text-align: center;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Assignment Management System</h1>
+    </header>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout ({{ user.email }})</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+</body>
+</html>

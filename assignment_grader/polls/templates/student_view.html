@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Student View{% endblock %}
+
+{% block content %}
+<h2>Your Courses and Assignments</h2>
+<ul>
+    {% for assignment in assignments %}
+        <li>
+            <b>{{ assignment.course.name }}</b> - {{ assignment.title }} (Due: {{ assignment.due_date }})
+            <ul>
+                <li>Lecturer: {{ assignment.lecturer }}</li>
+                <li>Description: {{ assignment.description }}</li>
+                <li>Keywords: {{ assignment.keywords }}</li>
+                <li>Marking Scheme: {{ assignment.marking_scheme }}</li>
+                {% if submission := submissions.filter(assignment=assignment).first %}
+                    <li>Grade: {{ submission.grade }} ({{ submission.feedback }})</li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

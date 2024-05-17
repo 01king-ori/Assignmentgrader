@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}View Assignments{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+        
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        padding: 1.5rem;
+        border: 1px solid #ddd;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        color: purple;
+    }
+
+    .mt-4 {
+        margin-top: 1rem;
+    }
+
+</style>
+
+<div class="mt-4">
+    <a class="btn btn-primary" href="{% url 'student_dashboard' %}">main menu</a><br><br>
+</div>
+<h2>All Assignments</h2>
+<ul>
+    
+    {% for assignment in assignments %}
+    
+        <li>
+            <h3>Title:{{ assignment.title }}</h3>
+            <p><b>Due Date:</b> {{ assignment.due_date }}</p>
+            <p><b>Lecturer:</b> {{ assignment.lecturer }}</p>
+            <a href="{% url 'assignment_detail' assignment.id %}">View Assignment</a><br>
+            <a href="{% url 'submit_work' assignment.id %}">Submit Work</a>
+        </li>
+    
+    {% endfor %}
+    
+</ul>
+{% endblock %}

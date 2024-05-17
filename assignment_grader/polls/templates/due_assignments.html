@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Almost Due Assignments{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+    }
+
+    li:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin: 0;
+        color: #555555;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #ffffff;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .mt-4 {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+
+<h2>Almost Due Assignments</h2>
+<ul>
+    {% for assignment in assignments %}
+        {% if assignment.days_until_due < 2 %}
+            <li>
+                <h3>Title: {{ assignment.title }}</h3>
+                
+                <p><b>Days until Due:</b> {{ assignment.days_until_due }}</p>
+                
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}

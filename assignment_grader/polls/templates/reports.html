@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Reports</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+   
+    .navbar {
+        background-color: #007bff;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #0056b3;
+    }
+
+    .navbar a.active {
+        background-color: #0056b3;
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="navbar">
+        <a class="{% if request.path == '/create_assignment/' %}active{% endif %}" href="{% url 'create_assignment' %}">Create Assignment</a>
+        <a class="{% if request.path == '/lecturer_view/' %}active{% endif %}" href="{% url 'lecturer_view' %}">View assignments and submissions</a>
+        <a class="{% if request.path == '/grades/' %}active{% endif %}" href="{% url 'grades' %}">View Grades</a>
+        <a class="{% if request.path == '/view_report/' %}active{% endif %}" href="{% url 'view_reports' %}">View Report</a>
+    </div>
+    <h1>Grade Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Passed</th>
+                <th>Failed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+            <tr>
+                <td>{{ report.assignment.title }}</td>
+                <td>{{ report.passed_count }}</td>
+                <td>{{ report.failed_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

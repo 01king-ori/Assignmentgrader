@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignment Detail{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    .mt-4 {
+        margin-top: 1rem;
+    }
+
+    .assignment-details {
+        border-radius: 5px;
+        padding: 1.5rem;
+        border: 1px solid #ddd;
+    }
+
+    .assignment-details h2 {
+        margin-top: 0;
+    }
+
+    .assignment-details p {
+        margin-bottom: 0.75rem;
+    }
+
+    .assignment-details p strong {
+        font-weight: bold;
+    }
+</style>
+
+<div class="mt-4">
+    <a class="btn btn-primary" href="{% url 'student_dashboard' %}">main menu</a><br><br>
+</div>
+<div class="assignment-details">
+    <h2>{{ assignment.title }}</h2>
+    <p><b>Course:</b> {{ assignment.course.name }}</p>
+    <p><b>Description:</b> {{ assignment.description }}</p>
+    <p><b>Due Date:</b> {{ assignment.due_date }}</p>
+    <p><b>Lecturer:</b> {{ assignment.lecturer }}</p>
+</div>
+{% endblock %}

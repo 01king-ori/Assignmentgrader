@@ -1,0 +1,97 @@
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #f0f0f0; /* Light background for the entire page */
+    }
+
+    .wrapper {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 2rem;
+        border-radius: 5px;
+        background-color: #fff; /* White background for the login form */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-bottom: 1.5rem;
+        color: #303030; /* Darker heading color */
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold; /* Bold labels for better readability */
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 0.75rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 100%;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green button color */
+        color: white;
+        border-color: #4CAF50;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #3e8e41; /* Darker green on hover */
+        border-color: #3e8e41;
+    }
+
+    p.error {
+        color: red;
+        font-weight: bold;
+    }
+
+    .register-link {
+        margin-top: 1rem;
+        text-align: center; /* Center the register links */
+    }
+
+    .register-link a {
+        color: #303030;
+        text-decoration: none;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button" name="submit">Login</button>
+    </form>
+    {% if error %}
+        <p class="error"><strong>{{ error }}</strong></p>
+    {% endif %}
+    <div class="register-link">
+        <li><a href="{% url 'register_lecturer' %}">Register Lecturer</a></li>
+        <li><a href="{% url 'register_student' %}">Register Student</a></li>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    p {
+        text-align: center;
+        color: #666;
+    }
+
+    #links {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #links a {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #links a:hover {
+        background-color: rebeccapurple;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Lecturer Dashboard</h2>
+    <p>Welcome to your dashboard.</p>
+    <div id="links">
+        <a href="{% url 'create_assignment' %}">Create Assignment</a><br><br>
+        <a href="{% url 'lecturer_view' %}">View assignments and submissions</a><br><br>
+        <a href="{% url 'grades' %}">View Grades</a><br><br>
+        <a href="{% url 'view_reports' %}">View Report</a><br><br>
+    </div>
+   
+</div>
+{% endblock %}

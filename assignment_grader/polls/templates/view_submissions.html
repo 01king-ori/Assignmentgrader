@@ -1,0 +1,81 @@
+
+	
+{% block title %}Submissions for Assignment: {{ assignment.title }}{% endblock %}
+	
+{% block additional_styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .submissions-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 800px;
+    }
+    .navbar {
+        background-color: #007bff;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #0056b3;
+    }
+
+    .navbar a.active {
+        background-color: #0056b3;
+    }
+
+
+    .submission-details {
+        margin-bottom: 20px;
+    }
+
+    .submission-details p {
+        margin: 5px 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="navbar">
+    <a class="{% if request.path == '/create_assignment/' %}active{% endif %}" href="{% url 'create_assignment' %}">Create Assignment</a>
+    <a class="{% if request.path == '/lecturer_view/' %}active{% endif %}" href="{% url 'lecturer_view' %}">View assignments and submissions</a>
+    <a class="{% if request.path == '/grades/' %}active{% endif %}" href="{% url 'grades' %}">View Grades</a>
+    <a class="{% if request.path == '/view_report/' %}active{% endif %}" href="{% url 'view_reports' %}">View Report</a>
+</div>
+
+<div class="submissions-container">
+    <h2>Submissions for Assignment: {{ assignment.title }}</h2>
+    {% if submissions %}
+        <ul>
+            {% for submission in submissions %}
+                <li class="submission-details">
+                    <p><strong>Student:</strong> {{ submission.student.user.username }}</p>
+                    
+                    <p><strong>Content:</strong> {{ submission.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No submissions available.</p>
+    {% endif %}
+</div>
+{% endblock %}
